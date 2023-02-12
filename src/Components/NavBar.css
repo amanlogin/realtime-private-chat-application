@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 50px;
+  padding: 10px;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: bold;
+}
+
+.user {
+  display: flex;
+  gap: 10px;
+}
+
+.user img {
+  background-color: bisque;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user button {
+  border: none;
+  background: #d1d5db;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,37 @@
+.messages {
+  background-color: #ddd6fe;
+  padding: 10px;
+  height: calc(100% - 160px);
+}
+
+.input {
+  height: 50px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+
+.send {
+  display: flex;
+  gap: 10px;
+}
+
+.send img {
+  cursor: pointer;
+}
+
+.send button {
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  background-color: #8b5cf6;
+}
