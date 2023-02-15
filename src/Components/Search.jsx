@@ -1,4 +1,3 @@
-import ".//Search.css";
 import React, { useContext, useState } from "react";
 import {
   collection,
@@ -12,7 +11,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);

@@ -19,20 +19,19 @@ const Login = () => {
       setErr(true);
     }
   };
-
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">VIPER'S CHAT</span>
+        <span className="logo">Connect.me</span>
         <span className="title">Login</span>
-        <form className="form" onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" />
+        <form onSubmit={handleSubmit}>
+          <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
-          <button>Login</button>
-          {err && <span>Something went Wrong!</span>}
+          <button>Sign in</button>
+          {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You don't have an account? <Link to="/register"> Register</Link>
+          You don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

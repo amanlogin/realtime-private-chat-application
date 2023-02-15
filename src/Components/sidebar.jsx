@@ -1,16 +1,16 @@
 import React from "react";
-import NavBar from "..//Components/Navbar";
+import Navbar from "./Navbar";
 import Search from "./Search";
-import Chatlist from "./Chatlist";
+import Chats from "./Chats";
 
-const sidebar = () => {
+const Sidebar = () => {
   return (
     <div className="sidebar">
-      <NavBar />
+      <Navbar />
       <Search />
-      <Chatlist />
+      <Chats />
     </div>
   );
 };
 
-export default sidebar;
+export default Sidebar;
