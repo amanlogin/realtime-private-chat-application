@@ -1,49 +1,39 @@
-import React from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import { db } from "../firebase";
 import ".//chatlist.css";
+import ChatMessage from "./ChatMessage";
 
 const Chatlist = () => {
+  const [chatlist, setChatlist] = useState([]);
+
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        setChatlist(doc.data());
+      });
+
+      return () => {
+        unsub();
+      };
+    };
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
+
   return (
     <div className="chatlist">
-      <div className="userChat">
-        <img
-          src="https://images.pexels.com/photos/14783579/pexels-photo-14783579.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="profile"
-        />
-        <div className="userChatInfo">
-          <span>Vipul</span>
-          <p>Hello</p>
+      {Object.entries(chatlist)?.map((chat) => (
+        <div className="userChat" key={chat[0]}>
+          <img src={chat[1].userInfo.photoURL} alt="profile" />
+          <div className="userChatInfo">
+            <span>{chat[1].userInfo.displayName}</span>
+            <p>{chat[1].userInfo.lastMessage?.text}</p>
+          </div>
         </div>
-      </div>
-      <div className="userChat">
-        <img
-          src="https://images.pexels.com/photos/14783579/pexels-photo-14783579.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="profile"
-        />
-        <div className="userChatInfo">
-          <span>Vipul</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="userChat">
-        <img
-          src="https://images.pexels.com/photos/14783579/pexels-photo-14783579.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="profile"
-        />
-        <div className="userChatInfo">
-          <span>Vipul</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="userChat">
-        <img
-          src="https://images.pexels.com/photos/14783579/pexels-photo-14783579.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="profile"
-        />
-        <div className="userChatInfo">
-          <span>Vipul</span>
-          <p>Hello</p>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
